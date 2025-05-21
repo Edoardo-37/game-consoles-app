@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, black --prefersdark;
+}
+@plugin "daisyui/theme" {
+  name: "light";
+  --color-accent: #6200ee;
+  --color-secondary: #00635d;
+  --color-error: #b5000a;
+  --color-info: #003087;
+  --color-success: #096118;
+}
+@plugin "daisyui/theme" {
+  name: "black";
+  --color-base-content: white;
+  --color-accent: #e4ccff;
+  --color-secondary: #ccfffd;
+  --color-error: #ffccce;
+  --color-info: #ccd5e7;
+  --color-success: #cee4d2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img[alt] {
+  font-style: oblique;
+}
+
+/* typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Manrope, sans-serif;
+  line-height: 1.1;
+}
+
+h1,
+h2 {
+  padding-top: 100px;
+}
+
+h2,
+h3 {
+  margin-bottom: 24px;
+}
+
+p,
+span,
+ol,
+ul {
+  font-family: Sora, sans-serif;
+  line-height: 1.8;
+}
+
+p {
+  margin: 1.5rem 0;
+}
+
+.base-paragraph {
+  margin: 0;
+}
+
+u {
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+
+/* Text Selection Color */
+::-moz-selection {
+  /* Code for Firefox */
+  color: #ffffff;
+  background: #00635d;
+}
+
+::selection {
+  color: #ffffff;
+  background: #00635d;
+}
+
+/* links */
+a {
+  transition: all 0.5s;
+}
+a:hover {
+  letter-spacing: 0.5px;
+}
+
+/* lazy images */
+img.not-loaded {
+  opacity: 0.5;
+}
+
+img.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding-top: 64px;
+  }
+}
