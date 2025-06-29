@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import LazyImageObserver from "../components/LazyImageObserver";
 import SideBar from "../components/SideBar";
 import ThemeController from "../components/ThemeController";
 import Navbar from "../components/Navbar";
@@ -8,33 +8,9 @@ import sonyConsoles from "../constants/sonyConsoles";
 import Footer from "../components/Footer";
 
 const Sony = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const image = entry.target;
-            image.src = image.dataset.lazy;
-            image.onload = () => {
-              image.classList.remove("not-loaded");
-              image.classList.add("loaded");
-            };
-            observer.unobserve(image);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const images = document.querySelectorAll(".not-loaded");
-    images.forEach((image) => {
-      observer.observe(image);
-    });
-
-    return () => observer.disconnect(); // cleanup
-  }, []);
   return (
     <>
+      <LazyImageObserver />
       <header>
         <Navbar />
       </header>
@@ -71,14 +47,18 @@ const Sony = () => {
             <p className="text-xl">
               In totale, sono state lanciate <b> 14 console</b> PlayStation dal
               lancio della prima nel 1995 in Nord America.{" "}
-              <u className="decoration-accent">NOTA:</u> l'elenco
-              include i modelli di console con revisione Slim e le due console
-              portatili PlayStation principali rilasciate. Le date di rilascio
-              fanno riferimento al Giappone.
+              <u className="decoration-accent">NOTA:</u> l'elenco include i
+              modelli di console con revisione Slim e le due console portatili
+              PlayStation principali rilasciate. Le date di rilascio fanno
+              riferimento al Giappone.
             </p>
             <SezioneConsole consoleBrandList={sonyConsoles} />
             <div className="flex justify-center my-10 text-2xl font-bold">
-              <a title="Torna all'inizio della sezione console Sony" className="p-5 rounded-3xl border-5 border-info" href="#0">
+              <a
+                title="Torna all'inizio della sezione console Sony"
+                className="p-5 rounded-3xl border-5 border-info"
+                href="#0"
+              >
                 Torna ad inizio elenco
               </a>
             </div>
