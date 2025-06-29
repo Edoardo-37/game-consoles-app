@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PageLinks from "./PageLinks";
 
 const Navbar = () => {
@@ -29,19 +30,19 @@ const Navbar = () => {
             </label>
           </div>
           <div className="mx-2 flex-1 px-2 text-2xl font-bold font-[Sora]">
-          <a title="Vai alla pagina principale" href="/">ConsoleVault</a>
+          <Link title="Vai alla pagina principale" to="/">ConsoleVault</Link>
           </div>
           <div className="hidden flex-none lg:block">
             <ul className="menu menu-horizontal text-lg font-bold">
               {/* Navbar menu content here */}
               <li>
-                <a title="Vai alla pagina dedicata alla storia delle console Nintendo" href="/nintendo-consoles">Nintendo</a>
+                <Link title="Vai alla pagina dedicata alla storia delle console Nintendo" to="/nintendo-consoles">Nintendo</Link>
               </li>
               <li>
-                <a title="Vai alla pagina dedicata alla storia delle console Sony" href="/sony-consoles">Sony</a>
+                <Link title="Vai alla pagina dedicata alla storia delle console Sony" to="/sony-consoles">Sony</Link>
               </li>
               <li>
-                <a title="Vai alla pagina dedicata alla storia delle console Microsoft" href="/microsoft-consoles">Microsoft</a>
+                <Link title="Vai alla pagina dedicata alla storia delle console Microsoft" to="/microsoft-consoles">Microsoft</Link>
               </li>
             </ul>
           </div>
