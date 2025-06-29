@@ -55,9 +55,9 @@ const Navbar = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu bg-base-200 min-h-full font-bold font-[Sora] w-80 p-4 md:w-160">
-          {/* Sidebar content here */}
+          {/* Drawer content */}
           <li className="pt-10 my-5 text-xl lg:px-2">
-            <a className='text-base-content link-hover hover:font-bold my-4' href="/">Home</a>
+            <Link className='text-base-content link-hover hover:font-bold my-4 p-4' href="/">Home</Link>
             <PageLinks />
           </li>
         </ul>
