@@ -1,40 +1,16 @@
-import { useEffect } from "react";
+import LazyImageObserver from "../components/LazyImageObserver";
 import SideBar from "../components/SideBar";
 import ThemeController from "../components/ThemeController";
 import Navbar from "../components/Navbar";
-import microsoftSidebarTitles from "../constants/SidebarContent/microsoftSidebarTitles"
+import microsoftSidebarTitles from "../constants/SidebarContent/microsoftSidebarTitles";
 import SezioneConsole from "../components/SezioneConsole";
 import microsoftConsoles from "../constants/microsoftConsoles";
 import Footer from "../components/Footer";
 
 const Microsoft = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const image = entry.target;
-            image.src = image.dataset.lazy;
-            image.onload = () => {
-              image.classList.remove("not-loaded");
-              image.classList.add("loaded");
-            };
-            observer.unobserve(image);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const images = document.querySelectorAll(".not-loaded");
-    images.forEach((image) => {
-      observer.observe(image);
-    });
-
-    return () => observer.disconnect(); // cleanup
-  }, []);
   return (
     <>
+      <LazyImageObserver />
       <header>
         <Navbar />
       </header>
@@ -56,13 +32,13 @@ const Microsoft = () => {
             />
             <ThemeController />
             <p className=" text-xl ps-[18px] border-s-4 border-s-accent">
-              <span className="text-2xl text-success font-bold">Xbox </span> è uno
-              dei tre marchi di console più riconosciuti sul mercato. Dal 2001,
-              Microsoft ha offerto console innovative con caratteristiche uniche
-              per ogni uscita. Quello che un tempo era un marchio sconosciuto è
-              ora un nome familiare e di spicco, con l'espansione verso TV,
-              contenuti multimediali ed abbonamenti. Ripercorriamo quindi la
-              storia delle console Xbox.
+              <span className="text-2xl text-success font-bold">Xbox </span> è
+              uno dei tre marchi di console più riconosciuti sul mercato. Dal
+              2001, Microsoft ha offerto console innovative con caratteristiche
+              uniche per ogni uscita. Quello che un tempo era un marchio
+              sconosciuto è ora un nome familiare e di spicco, con l'espansione
+              verso TV, contenuti multimediali ed abbonamenti. Ripercorriamo
+              quindi la storia delle console Xbox.
             </p>
             <h2 className="text-3xl md:text-4xl font-bold">
               Quante console sono esistite?
