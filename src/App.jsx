@@ -3,12 +3,7 @@ import LazyImageObserver from "./components/LazyImageObserver";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import homeSidebarTitles from "./constants/SidebarContent/homeSidebarTitles";
-import Sezione1 from "./components/HomepageArticles/Sezione1";
-import Sezione2 from "./components/HomepageArticles/Sezione2";
-import Sezione3 from "./components/HomepageArticles/Sezione3";
-import Sezione4 from "./components/HomepageArticles/Sezione4";
-import Sezione5 from "./components/HomepageArticles/Sezione5";
-import Sezione6 from "./components/HomepageArticles/Sezione6";
+import IntroBody from "./components/HomepageArticles/IntroBody";
 import Footer from "./components/Footer";
 
 function App() {
@@ -37,14 +32,13 @@ function App() {
               <b> Nintendo, Sony e Microsoft</b> con informazioni e i giochi che
               hanno segnato maggiormente ogni piattaforma.
             </p>
-            <Sezione1 />
-            <Sezione2 />
-            <Sezione3 />
-            <Sezione4 />
-            <Sezione5 />
-            <Sezione6 />
+            <IntroBody />
             <div className="flex justify-center my-10 text-2xl font-bold">
-              <a title="Torna ad inizio pagina" className="p-5 rounded-3xl border-5 border-accent" href="#hero">
+              <a
+                title="Torna ad inizio pagina"
+                className="p-5 rounded-3xl border-5 border-accent"
+                href="#hero"
+              >
                 Torna ad inizio pagina
               </a>
             </div>
