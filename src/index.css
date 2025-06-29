@@ -1,7 +1,9 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default, black --prefersdark;
 }
+
 @plugin "daisyui/theme" {
   name: "light";
   --color-accent: #6200ee;
@@ -10,6 +12,7 @@
   --color-info: #003087;
   --color-success: #096118;
 }
+
 @plugin "daisyui/theme" {
   name: "black";
   --color-base-content: white;
@@ -22,7 +25,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
 }
 
 img[alt] {
@@ -87,6 +89,7 @@ u {
 a {
   transition: all 0.5s;
 }
+
 a:hover {
   letter-spacing: 0.5px;
 }
@@ -104,5 +107,11 @@ img.loaded {
 @media (min-width: 1024px) {
   body {
     padding-top: 64px;
+  }
+}
+
+@media(max-width: 1200px) and (orientation: landscape) {
+  html {
+    scroll-padding-top: 80px;
   }
 }
