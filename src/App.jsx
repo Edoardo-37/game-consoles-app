@@ -3,7 +3,7 @@ import LazyImageObserver from "./components/LazyImageObserver";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import homeSidebarTitles from "./constants/SidebarContent/homeSidebarTitles";
-import IntroBody from "./components/HomepageArticles/IntroBody";
+import IntroBody from "./components/MainArticleSections/IntroBody";
 import Footer from "./components/Footer";
 
 function App() {
