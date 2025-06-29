@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import ThemeController from "./components/ThemeController";
+import LazyImageObserver from "./components/LazyImageObserver";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import homeSidebarTitles from "./constants/SidebarContent/homeSidebarTitles";
@@ -12,33 +12,9 @@ import Sezione6 from "./components/HomepageArticles/Sezione6";
 import Footer from "./components/Footer";
 
 function App() {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const image = entry.target;
-            image.src = image.dataset.lazy;
-            image.onload = () => {
-              image.classList.remove("not-loaded");
-              image.classList.add("loaded");
-            };
-            observer.unobserve(image);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const images = document.querySelectorAll(".not-loaded");
-    images.forEach((image) => {
-      observer.observe(image);
-    });
-
-    return () => observer.disconnect(); // cleanup
-  }, []);
   return (
     <>
+      <LazyImageObserver />
       <header>
         <Navbar />
       </header>
