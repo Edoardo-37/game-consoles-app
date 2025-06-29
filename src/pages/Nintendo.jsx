@@ -1,40 +1,16 @@
-import { useEffect } from "react";
+import LazyImageObserver from "../components/LazyImageObserver";
 import SideBar from "../components/SideBar";
 import ThemeController from "../components/ThemeController";
 import Navbar from "../components/Navbar";
 import nintendoSidebarTitles from "../constants/SidebarContent/nintendoSidebarTitles";
-import nintendoConsoles from "../constants/nintendoConsoles"
+import nintendoConsoles from "../constants/nintendoConsoles";
 import SezioneConsole from "../components/SezioneConsole";
 import Footer from "../components/Footer";
 
 const Nintendo = () => {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const image = entry.target;
-            image.src = image.dataset.lazy;
-            image.onload = () => {
-              image.classList.remove("not-loaded");
-              image.classList.add("loaded");
-            };
-            observer.unobserve(image);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const images = document.querySelectorAll(".not-loaded");
-    images.forEach((image) => {
-      observer.observe(image);
-    });
-
-    return () => observer.disconnect(); // cleanup
-  }, []);
   return (
     <>
+      <LazyImageObserver />
       <header>
         <Navbar />
       </header>
@@ -73,14 +49,18 @@ const Nintendo = () => {
               <i>in uscita il 5 Giugno 2025</i>, sarà la <b>33esima</b>. Vediamo
               ora quali sono state le console che hanno definito la storia di
               Nintendo nel settore gaming in ordine di uscita; dal 1977 al 2025.{" "}
-              <u className="decoration-accent">NOTA:</u> le date di
-              rilascio riportate sono Nord Americane; inoltre nella lista sono
-              inclusi tutti i modelli di revisione usciti sia per le console
-              portatili che domestiche.
+              <u className="decoration-accent">NOTA:</u> le date di rilascio
+              riportate sono Nord Americane; inoltre nella lista sono inclusi
+              tutti i modelli di revisione usciti sia per le console portatili
+              che domestiche.
             </p>
             <SezioneConsole consoleBrandList={nintendoConsoles} />
             <div className="flex justify-center my-10 text-2xl font-bold">
-              <a title="Torna all'inizio della sezione console Nintendo" className="p-5 rounded-3xl border-5 border-error" href="#0">
+              <a
+                title="Torna all'inizio della sezione console Nintendo"
+                className="p-5 rounded-3xl border-5 border-error"
+                href="#0"
+              >
                 Torna ad inizio elenco
               </a>
             </div>
