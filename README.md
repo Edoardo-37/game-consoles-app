@@ -104,19 +104,28 @@ Apri il browser su http://localhost:5173
 
 ---
 
-`CSS`
+### CSS
 
 - Layout a griglia e flessibili
 - Design per dispositivi mobili
 - Barra laterale (solo per schermi di grandi dimensioni) con link interni alle varie sezioni dell'articolo.
 - Utilizzo del plugin DaisyUI per creare il controller per la Dark Mode: tramite il componente `<ThemeController />` si imposta l'icona e i nomi dei temi dai quali effettuare il cambio. In CSS si specificano i nomi dei temi e la palette colori da modificare.
 
-![Immagine del code CSS sulla Dark Mode](docs/microsoft-2-Desktop.png)
+![Immagine del code CSS sulla Dark Mode](docs/CSS-daisyUI-DarkModeCode.png)
 
-`JS`
+---
 
-- Lazy Load delle immagini per migliori prestazioni
-- Utilizzo di Intersection Observer per implementare il Lazy load e per applicare un font weight differente alle scritte della sidebar quando intercettiamo i titoli delle diverse sezioni della pagina.
+### JavaScript
+
+- Lazy Load delle immagini per migliori prestazioni gestite dal componente `<LazyImageObserver />`
+- Utilizzo di un secondo Intersection Observer, creato con un piccolo **aiuto dell'IA**, nel componente `<Sidebar />` per implementare il Lazy load e per applicare un font weight differente alle scritte della sidebar quando intercettiamo i titoli delle diverse sezioni della pagina. Di seguito il codice:
+
+![Immagine del code JSX del componente Sidebar](docs/sidebarComponent.png)
+
+Vengono osservati tutti gli h2 della pagina e non appena si intercettano, la propreità `activeId` si setta con il valore dell'ID del sottotitolo intercettato. Poi il componente stampa a schermo un mapping dei vari titoli della sidebar ricevuti attraverso una prop `sidebarSections`. Questa prop è un array di oggetti ognuno contenente id e testo del titolo; (di seguito un esempio con l'array di oggetti sui titoli della sidebar della pagina principale).
+Infine avviene il controllo: se l'id del titolo corrisponde a quello interecettato allora il colore e font weight del testo cambiano.
+
+![Immagine del code JSX dell'array di oggetti con i titoli per la sidebar della pagina principale](docs/homepageSidebarTitles.png)
 
 ---
 
