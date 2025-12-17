@@ -3,7 +3,7 @@ import LazyImageObserver from "./components/LazyImageObserver";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import homeSidebarTitles from "./constants/SidebarContent/homeSidebarTitles";
-import IntroBody from "./components/MainArticleSections/IntroBody";
+import HomePageArticleBody from "./components/MainArticleSections/HomePageArticleBody";
 import Footer from "./components/Footer";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
               <b> Nintendo, Sony e Microsoft</b> con informazioni e i giochi che
               hanno segnato maggiormente ogni piattaforma.
             </p>
-            <IntroBody />
+            <HomePageArticleBody />
             <div className="flex justify-center my-10 text-2xl font-bold">
               <a
                 title="Torna ad inizio pagina"
