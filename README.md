@@ -1,6 +1,12 @@
 # Sito web sulle console videoludiche - 'ConsoleVault'
 
-Questo è un sito web creato con `React e il framework Vite come compiler`. Inoltre, per evitare il problema dello scope globale CSS e applicare stili ai componenti e ai tag JSX individualmente, ho utilizzato il **framework CSS Tailwind con DaisyUi come plugin**. Il file `index.css` contiene stili generali che impediscono un'eccessiva ripetizione delle regole di Tailwind.
+Questo è un sito web creato con React e il framework Vite. Inoltre, per evitare il problema dello scope globale CSS e applicare stili ai componenti e ai tag JSX individualmente, è stato utilizzato il **framework CSS Tailwind con DaisyUi come plugin**. Il file `index.css` contiene stili generali che impediscono un'eccessiva ripetizione delle regole di Tailwind.
+
+#### Nota sulle immagini
+
+Le immagini delle console presenti in questo progetto raffigurano prodotti e marchi di proprietà di: ATARI, Panasonic, Nintendo, Sony e Microsoft. Tutti i diritti, inclusi copyright e marchi registrati, appartengono ai rispettivi proprietari. Le immagini sono utilizzate esclusivamente a scopo illustrativo e informativo.
+
+Questo progetto NON è affiliato o approvato dalle aziende citate.
 
 ---
 
@@ -93,8 +99,8 @@ Apri il browser su http://localhost:5173
 
 - Struttura identica alla Pagina principale e quella relativa alle console Nintendo e Sony. L'array di oggetti con le informazioni delle console è chiamato `microsoftConsoles`.
 
-![Immagine della pagina dedicata alle console microsoft](docs/microsoft-1-Desktop.png)
-![Immagine 2 della pagina dedicata alle console microsoft](docs/microsoft-2-Desktop.png)
+![Immagine della pagina dedicata alle console Microsoft](docs/microsoft-1-Desktop.png)
+![Immagine 2 della pagina dedicata alle console Microsoft](docs/microsoft-2-Desktop.png)
 
 ---
 
@@ -103,6 +109,9 @@ Apri il browser su http://localhost:5173
 - Layout a griglia e flessibili
 - Design per dispositivi mobili
 - Barra laterale (solo per schermi di grandi dimensioni) con link interni alle varie sezioni dell'articolo.
+- Utilizzo del plugin DaisyUI per creare il controller per la Dark Mode: tramite il componente `<ThemeController />` si imposta l'icona e i nomi dei temi dai quali effettuare il cambio. In CSS si specificano i nomi dei temi e la palette colori da modificare.
+
+![Immagine del code CSS sulla Dark Mode](docs/microsoft-2-Desktop.png)
 
 `JS`
 
@@ -120,4 +129,4 @@ La cartella `/dist` conterrà tutti i file ottimizzati.
 
 #### Note tecniche & Difficoltà riscontrate
 
--
+1.
