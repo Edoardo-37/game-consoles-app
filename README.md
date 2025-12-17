@@ -91,16 +91,16 @@ Apri il browser su http://localhost:5173
 
 - Struttura identica alla Pagina principale e quella relativa alle console Nintendo con un titolo, un'immagine di apertura, un'introduzione e l'elenco delle console gestito dal componente `<SezioneConsole />`. L'unico cambiamento è l'array di oggetti con le informazioni delle console passato a SezioneConsole, `sonyConsoles`.
 
-![Immagine della pagina dedicata alle console sony](docs/sony-1-Desktop.png)
-![Immagine 2 della pagina dedicata alle console sony](docs/sony-2-Desktop.png)
+![Immagine della pagina dedicata alle console sony](docs/Sony-1-Desktop.png)
+![Immagine 2 della pagina dedicata alle console sony](docs/Sony-2-Desktop.png)
 <br>
 
 ##### Pagina console Microsoft
 
 - Struttura identica alla Pagina principale e quella relativa alle console Nintendo e Sony. L'array di oggetti con le informazioni delle console è chiamato `microsoftConsoles`.
 
-![Immagine della pagina dedicata alle console Microsoft](docs/microsoft-1-Desktop.png)
-![Immagine 2 della pagina dedicata alle console Microsoft](docs/microsoft-2-Desktop.png)
+![Immagine della pagina dedicata alle console Microsoft](docs/Microsoft-1-Desktop.png)
+![Immagine 2 della pagina dedicata alle console Microsoft](docs/Microsoft-2-Desktop.png)
 
 ---
 
@@ -113,7 +113,9 @@ Apri il browser su http://localhost:5173
 
 ![Immagine del code CSS sulla Dark Mode](docs/CSS-daisyUI-DarkModeCode.png)
 
----
+La dark mode si presenta così:
+
+## ![Immagine del pagina principale in Dark Mode](docs/homepage-1-Desktop-DARK.png)
 
 ### JavaScript
 
