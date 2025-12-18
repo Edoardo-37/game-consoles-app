@@ -60,28 +60,32 @@ Apri il browser su http://localhost:5173
 ### Pagine principali del sito
 
 1. **Pagina principale** con un'introduzione alla storia dell'industria videoludica.
-2. Pagina dedicata alla storia delle **console Nintendo** .
-3. Pagina dedicata alla storia delle **console Sony** .
-4. Pagina dedicata alla storia delle **console Microsoft** .
+2. Pagina dedicata alla storia delle **console Nintendo**.
+3. Pagina dedicata alla storia delle **console Sony**.
+4. Pagina dedicata alla storia delle **console Microsoft**.
 
 - Tutte le pagine presentano lo stesso layout: una sidebar a sinistra che evidenzia i vari sottotitoli man mano che ci passiamo sopra grazie ad un Intersection Observer; e il contenuto a destra, tutto in una grande griglia da 2 colonne. Da mobile la sidebar sparisce e rimane solo il contenuto.
 - Nelle diverse pagine persistono: il componente `<NavBar />`, `<Sidebar />` e `<Footer />`.
 
 ##### Pagina principale
 
-- Contenuto principale della pagina componentizzato dal componente `<HomePageArticleBody />`.
-- Componente `<Timeline />` preso da DaisyUI che accetta in ingresso informazioni provenienti da un'array di oggetti (presente nel file `./src/constants/homepageTimelineContent.jsx`) e stampa alternando i contneuti a destra e sinistra.
+- Contenuto principale della pagina gestito dal componente `<HomePageArticleBody />`.
+- Componente `<Timeline />` preso da DaisyUI che accetta in ingresso informazioni provenienti da un'array di oggetti (presente nel file `./src/constants/homepageTimelineContent.jsx`) e stampa alternando i contenuti a destra e sinistra a seconda se l'id della key prop è pari o dispari.
 
 ![Immagine della homepage](docs/homepage-1-Desktop.png)
 ![Immagine 2 della homepage](docs/homepage-2-Desktop.png)
+
+Componente `<Timeline />`
+
+![Immagine del componente Timeline](docs/TimelineComponent.png)
 
 <br>
 
 ##### Pagina console Nintendo
 
 - Struttura identica alla Pagina principale con un titolo, un'immagine di apertura e un'introduzione.
-- Contenuto principale della pagina componentizzato dal componente `<SezioneConsole />`: a questo componente viene passata come prop l'array di oggetti `nintendoConsoles` che conterrà le informaizoni di tutte le console Nintendo (o della pagina di console che si sta visitando). Il componente restituisce un mapping dell'array per scorrere ognuno dei suoi elementi (ogni console) e stampa per ognuno il componente `<ConsoleCard />` al quale viene passata la key prop tramite id contenuto in ogni elemento dell'array di oggetti, e la prop consoleInfo che conterrà il singolo elemento dell'array che si sta mappando in quel momento.
-  A questo punto il componente `<ConsoleCard />` fa una destrutturazione di tutte le proprietà dell'oggetto prop consoleInfo ricevuto e stampa un article con titolo, immagine, descrizione e, se esiste la proprietà `bestGamesList` nell'oggetto in quel momento mappato, una lista con i migliori giochi di quella specifica console. Per il codice JSX di tutto questo **[vai alla sezione Note tecniche](#note-tecniche)**
+- Contenuto principale della pagina gestito dal componente `<SezioneConsole />`: a questo componente viene passata come prop l'array di oggetti `nintendoConsoles` che conterrà le informaizoni di tutte le console Nintendo (o della pagina di console che si sta visitando). Il componente restituisce un mapping dell'array per scorrere ognuno dei suoi elementi (ogni console) e stampa per ognuno il componente `<ConsoleCard />` al quale viene passata la key prop tramite id contenuto in ogni elemento dell'array di oggetti, e la prop consoleInfo che conterrà il singolo elemento dell'array che si sta mappando in quel momento.
+  A questo punto il componente `<ConsoleCard />` fa una destrutturazione di tutte le proprietà dell'oggetto prop consoleInfo ricevuto e stampa un article con titolo, immagine, descrizione e, se esiste la proprietà `bestGamesList` nell'oggetto in quel momento mappato, una lista con i migliori giochi di quella specifica console. Per il codice JSX di tutto questo **[vai alla sezione Note tecniche e difficoltà riscontrate.](#note-tecniche--difficoltà-riscontrate)**
 
 ![Immagine della pagina dedicata alle console Nintendo](docs/Nintendo-1-Desktop.png)
 ![Immagine 2 della pagina dedicata alle console Nintendo](docs/Nintendo-2-Desktop.png)
@@ -120,12 +124,13 @@ La dark mode si presenta così:
 ### JavaScript
 
 - Lazy Load delle immagini per migliori prestazioni gestite dal componente `<LazyImageObserver />`
-- Utilizzo di un secondo Intersection Observer, creato con un piccolo **aiuto dell'IA**, nel componente `<Sidebar />` per implementare il Lazy load e per applicare un font weight differente alle scritte della sidebar quando intercettiamo i titoli delle diverse sezioni della pagina. Di seguito il codice:
+- ##### Componente `<Sidebar />`
+  Utilizzo di un secondo Intersection Observer, creato con un piccolo **aiuto dell'IA**, nel componente `<Sidebar />` per implementare il Lazy load e per applicare un font weight differente alle scritte della sidebar quando intercettiamo i titoli delle diverse sezioni della pagina. Di seguito il codice:
 
 ![Immagine del code JSX del componente Sidebar](docs/sidebarComponent.png)
 
 Vengono osservati tutti gli h2 della pagina e non appena si intercettano, la propreità `activeId` si setta con il valore dell'ID del sottotitolo intercettato. Poi il componente stampa a schermo un mapping dei vari titoli della sidebar ricevuti attraverso una prop `sidebarSections`. Questa prop è un array di oggetti ognuno contenente id e testo del titolo; (di seguito un esempio con l'array di oggetti sui titoli della sidebar della pagina principale).
-Infine avviene il controllo: se l'id del titolo corrisponde a quello interecettato allora il colore e font weight del testo cambiano.
+Infine avviene il controllo: se l'id del titolo corrisponde a quello intercettato allora il colore e font weight del testo cambiano.
 
 ![Immagine del code JSX dell'array di oggetti con i titoli per la sidebar della pagina principale](docs/homepageSidebarTitles.png)
 
@@ -140,4 +145,25 @@ La cartella `/dist` conterrà tutti i file ottimizzati.
 
 #### Note tecniche & Difficoltà riscontrate
 
-1.
+1. Quando si cambiava rotta, tramite il package npm `react-router`, notavo che lo scroll della pagina non tornava all'inizio bensì rimaneva in un punto della pagina casuale a seconda della sua lunghezza. **Per risolvere** ho creato il componente `<ScrollToTop />` che utilizza l'hook useLocation per destrutturare la proprietà pathname che ha come valore il path della pagina in cui si è in quel momento.
+   Poi ho inserito uno useEffect che, al variare del pathname (messo nell'array delle dipendenze), facesse tornare le coordinate dello scroll a 0, 0.
+
+![Immagine del code JSX del componente ScrollToTop](docs/scrollToTopComponent.png)
+
+2. Ogni console mostrata sulle pagine di Nintendo, Sony e Microsoft è generata partendo da un array di oggetti contente le informazioni (ed eventuali liste di alcuni dei migliori giochi usciti). Questo array, chiamato `nintendoConsoles` nel caso delle console Nintendo e così via, viene passato come prop al componente `<SezioneConsole />`: questo componente scorre l'array con la proprietà map e per ogni elemento (il singolo gioco), stampa una `<ConsoleCard />`. ConsoleCard stamperà un mini article con dentro, un titolo, immagine, caption dell'immagine, paragrafi, ed eventuali liste di giochi. Di seguito le immagini:
+
+Array di oggetti delle console - `nintendoConsoles`
+
+![Immagine del code JSX dell'array di oggetti nintendoConsoles](docs//nintendo-consoles-array.png)
+
+Componente `<SezioneConsole />`
+
+![Immagine del code JSX del componente SezioneConsole](docs/SezioneConsole-Component.png)
+
+Componente `<ConsoleCard />`
+
+![Immagine del code JSX del componente ConsoleCard](docs/ConsoleCard-Component.png)
+
+2. Come si applica tutto questo nelle pagine? Nella pagina `Nintendo.jsx`, ad esempio si importa l'array di oggetti e il componente `<SezioneConsole />` e lo si dichiara passando come prop l'array di oggetti `nintendoConsoles` e così via per la pagina per le console Sony e Microsoft. Di seguito l'esempio della pagina Nintendo.jsx.
+
+![Immagine del code JSX della pagina relativa a Nintendo e le sue console](docs/nintendo-page.png)
